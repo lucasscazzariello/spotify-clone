@@ -1,6 +1,7 @@
 import NextAuth from 'next-auth';
 import SpotifyProvider from 'next-auth/providers/spotify';
 import spotifyApi, { LOGIN_URL } from '../../../lib/spotify';
+import { REFRESH_TOKEN_ERROR } from '../../../utils/constants';
 
 async function refreshAccessToken(token) {
   try {
@@ -21,7 +22,7 @@ async function refreshAccessToken(token) {
 
     return {
       ...token,
-      error: 'RefreshAccessTokenError',
+      error: REFRESH_TOKEN_ERROR,
     };
   }
 }
